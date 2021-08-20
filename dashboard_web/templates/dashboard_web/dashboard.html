@@ -22,8 +22,13 @@
             <td>
                 {{ login.username }}
             </td>
+
             <td>
-                {{ login.status }}
+                {% if login.status == 'OK' %}
+                <button type="button" class="btn btn-success" disabled>{{ login.status }}</button>
+                {% else %}
+                <button type="button" class="btn btn-danger" disabled>{{ login.status }}</button>
+                {% endif %}
             </td>
 
         </tr>
