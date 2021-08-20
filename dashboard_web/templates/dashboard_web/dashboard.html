@@ -1,0 +1,18 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        {% block content %}
+
+            <h1>{{PETER}}</h1>
+            <h2>{{NAME.age}}</h2>
+
+            {% for name in name_list %}
+                {{name}}
+
+            {% endfor %}
+
+        {% endblock %}
+    </body>
+</html>
