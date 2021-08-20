@@ -1,12 +1,13 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
+from rest_framework import viewsets
+
 from .models import FtpLogin
+from .serializers import FtpLoginSerializer
 
 # Create your views here.
 
-def ftp_login(request):
-    if request.method == 'POST':
-        test = request.POST
-        print(test)
-    return HttpResponse()
+class FtpLoginViewSet(viewsets.ModelViewSet):
+    queryset = FtpLogin.objects.all().order_by('username')
+    serializer_class = FtpLoginSerializer
