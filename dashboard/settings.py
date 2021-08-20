@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'dashboard_web.apps.DashboardWebConfig'
+    'dashboard_web.apps.DashboardWebConfig',
+    'cool_api.apps.CoolApiConfig'
 ]
 
 MIDDLEWARE = [

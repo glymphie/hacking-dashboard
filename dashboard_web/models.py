@@ -1,7 +1,6 @@
 from django.db import models
 
 # Create your models here.
-
 class Test(models.Model):
 
     name = models.CharField(verbose_name="Name", max_length=120, null=True)
