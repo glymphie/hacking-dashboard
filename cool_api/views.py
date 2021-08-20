@@ -9,5 +9,5 @@ from .serializers import FtpLoginSerializer
 # Create your views here.
 
 class FtpLoginViewSet(viewsets.ModelViewSet):
-    queryset = FtpLogin.objects.all().order_by('username')
+    queryset = FtpLogin.objects.all().order_by('date')
     serializer_class = FtpLoginSerializer
