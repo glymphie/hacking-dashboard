@@ -29,7 +29,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['192.168.100.11']
 
-ALLOWED_CIDR_NETS = ['192.168.10.0/24']
 
 
 # Application definition
@@ -47,7 +46,6 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'allow_cidr.middleware.AllowCIDRMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',

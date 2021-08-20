@@ -8,7 +8,6 @@
         <tr>
             <th>Date</th>
             <th>IP</th>
-            <th>Username</th>
             <th>Status</th>
         </tr>
         {% for login in ftplogins %}
@@ -19,15 +18,14 @@
             <td>
                 {{ login.ip }}
             </td>
-            <td>
-                {{ login.username }}
-            </td>
 
             <td>
                 {% if login.status == 'OK' %}
                 <button type="button" class="btn btn-success" disabled>{{ login.status }}</button>
-                {% else %}
+                {% elif login.status == 'FAIL' %}
                 <button type="button" class="btn btn-danger" disabled>{{ login.status }}</button>
+                {% else %}
+                <button type="button" class="btn btn-primary" disabled>{{ login.status }}</button>
                 {% endif %}
             </td>
 
