@@ -1,13 +1,14 @@
 from django.shortcuts import render
 
-from .models import Test
+# from .models import Test
+
+from cool_api.models import FtpLogin
 
 
 # Create your views here.
 
 
 def dashboard(request):
-    test = request.GET.dict()
-    name = test['name']
-    data = Test.objects
-    return render(request, "dashboard_web/dashboard.html", {"PETER": "COOL", "NAME": data})
+    dblogins = FtpLogin.get_all()
+    context = {'ftplogins' : dblogins}
+    return render(request, "dashboard_web/dashboard.html", context )

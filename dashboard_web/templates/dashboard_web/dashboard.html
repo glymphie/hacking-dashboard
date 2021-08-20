@@ -1,18 +1,41 @@
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-    </head>
-    <body>
-        {% block content %}
+{% extends 'dashboard_web/base.html' %}
+{% load static %}
+{% block title %}Hacking Dashboard{% endblock %}
 
-            <h1>{{PETER}}</h1>
-            <h2>{{NAME.age}}</h2>
+{% block content %}
+    {% if ftplogins %}
+    <table class="table">
+        <tr>
+            <th>Date</th>
+            <th>IP</th>
+            <th>Username</th>
+            <th>Status</th>
+        </tr>
+        {% for login in ftplogins %}
+        <tr>
+            <td>
+                {{ login.date }}
+            </td>
+            <td>
+                {{ login.ip }}
+            </td>
+            <td>
+                {{ login.username }}
+            </td>
+            <td>
+                {{ login.status }}
+            </td>
 
-            {% for name in name_list %}
-                {{name}}
+        </tr>
 
-            {% endfor %}
 
-        {% endblock %}
-    </body>
-</html>
+    {% endfor %}
+    </table>
+
+    {% else %}
+        <div class="col-md-12">
+            <p>No items Available</p>
+        </div>
+    {% endif %}
+
+{% endblock %}

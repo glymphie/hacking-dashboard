@@ -11,3 +11,7 @@ class FtpLogin(models.Model):
 
     def __str__(self):
         return f"[{self.date}] {self.username} @ {self.ip} : {self.status} "
+
+    @classmethod
+    def get_all(cls):
+        return cls.objects.all()
