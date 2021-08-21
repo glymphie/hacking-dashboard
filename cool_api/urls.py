@@ -5,8 +5,10 @@ from . import views
 
 router = routers.DefaultRouter()
 router.register(r'ftp-login', views.FtpLoginViewSet)
+router.register(r'endlessh', views.EndlesshViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('ftp-login/', include('rest_framework.urls', namespace='rest_framework')) #views.ftp_login, name='ftp-login', )
+    path('ftp-login/', include('rest_framework.urls', namespace='rest_framework_ftp-login')),
+    path('endlessh/', include('rest_framework.urls', namespace='rest_framework_endlessh')),
 ]

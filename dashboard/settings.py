@@ -27,7 +27,7 @@ with open('dashboard/.secrets/django_secret_key.json') as f:
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.100.11']
+ALLOWED_HOSTS = ['*']
 
 
 

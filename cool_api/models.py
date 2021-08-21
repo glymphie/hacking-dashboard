@@ -20,8 +20,12 @@ class FtpLogin(models.Model):
 class Endlessh(models.Model):
     date = models.DateTimeField(verbose_name="Date", unique=True, null=True) # Eg. 2015-10-09 23:55:59.342380
     ip = models.GenericIPAddressField(verbose_name="IP") # Eg. 0.0.0.0
-    time_wasted = models.FloatField() 
-    bytes_sent = models.IntegerField()
+    time_wasted = models.FloatField(verbose_name='Time_Wasted', null=True) 
+    bytes_sent = models.IntegerField(verbose_name='Bytes_Sent', null=True)
 
+    def __str__(self):
+        return f"[{self.date}] {self.ip} - Time wasted: {self.time_wasted}, Bytes sent: {self.bytes_sent}"
 
-
+    @classmethod
+    def get_all(cls):
+        return cls.objects.all()
