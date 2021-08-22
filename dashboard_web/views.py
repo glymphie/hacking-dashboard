@@ -1,7 +1,5 @@
 from django.shortcuts import render
 
-# from .models import Test
-
 from cool_api.models import FtpLogin, Endlessh
 
 
@@ -9,7 +7,7 @@ from cool_api.models import FtpLogin, Endlessh
 
 
 def dashboard(request):
-    ftp_logins = FtpLogin.get_all()
+    ftp_logins = FtpLogin.get_10_latest()
     endlessh = Endlessh.get_all()
     context = {'ftplogins' : ftp_logins, 'endlessh': endlessh}
     return render(request, "dashboard_web/dashboard.html", context )

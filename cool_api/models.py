@@ -16,6 +16,10 @@ class FtpLogin(models.Model):
     def get_all(cls):
         return cls.objects.all()
 
+    @classmethod
+    def get_10_latest(cls):
+        return cls.objects.all().order_by('-date')[:10]
+
 
 class Endlessh(models.Model):
     date = models.DateTimeField(verbose_name="Date", unique=True, null=True) # Eg. 2015-10-09 23:55:59.342380
@@ -29,3 +33,7 @@ class Endlessh(models.Model):
     @classmethod
     def get_all(cls):
         return cls.objects.all()
+
+    @classmethod
+    def get_10_latest(cls):
+        return cls.objects.all().order_by('-date')[:10]

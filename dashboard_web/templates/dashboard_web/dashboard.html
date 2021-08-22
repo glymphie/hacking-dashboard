@@ -3,48 +3,109 @@
 {% block title %}Hacking Dashboard{% endblock %}
 
 {% block content %}
-<div class="container">
-<div class="row">
-    <div class="col">
-        <h1>FTP Logins</h1>
-        {% if ftplogins %}
-        <table class="table table-dark table-striped">
-            <tr>
-                <th>Date</th>
-                <th>IP</th>
-                <th>Status</th>
-            </tr>
-            {% for login in ftplogins %}
-            <tr>
-                <td>
-                    {{ login.date }}
-                </td>
-                <td>
-                    {{ login.ip }}
-                </td>
 
-                <td>
-                    {% if login.status == 'OK' %}
-                    <button type="button" class="btn btn-success" disabled>{{ login.status }}</button>
-                    {% elif login.status == 'FAIL' %}
-                    <button type="button" class="btn btn-danger" disabled>{{ login.status }}</button>
-                    {% else %}
-                    <button type="button" class="btn btn-primary" disabled>{{ login.status }}</button>
-                    {% endif %}
-                </td>
-
-            </tr>
-
-
-        {% endfor %}
-        </table>
-
-        {% else %}
-            <div class="col-md-12">
-                <p>No items Available</p>
-            </div>
-        {% endif %}
+<div class="page-header">
+    <div class="page-title">
+        <h3>Dashboard</h3>
     </div>
+</div>
+
+<div class="row layout-top-spacing">
+
+    <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
+        <div class="widget widget-table-two">
+    
+            <div class="widget-heading">
+                <h5 class="">Last 10 FTP attacks</h5>
+            </div>
+    
+            <div class="widget-content">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th><div class="th-content">Date</div></th>
+                                <th><div class="th-content">IP</div></th>
+                                <th><div class="th-content">Status</div></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for login in ftplogins %}
+                            <tr>
+                                <td>
+                                    <div class="td-content">{{ login.date }}</div>
+                                </td>
+                                <td>
+                                    <div class="td-content">{{ login.ip }}</div>
+                                </td>
+                                <td>
+                                    {% if login.status == 'OK' %}
+                                        <div class="td-content"><span class="badge outline-badge-success">{{ login.status }}</span></div>
+                                    {% elif login.status == 'FAIL' %}
+                                        <div class="td-content"><span class="badge outline-badge-danger">{{ login.status }}</span></div>
+                                    {% else %}
+                                        <div class="td-content"><span class="badge outline-badge-primary">{{ login.status }}</span></div>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
+        <div class="widget widget-table-two">
+    
+            <div class="widget-heading">
+                <h5 class="">Last 10 endleSSH attacks</h5>
+            </div>
+    
+            <div class="widget-content">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th><div class="th-content">Date</div></th>
+                                <th><div class="th-content">IP</div></th>
+                                <th><div class="th-content">Time wasted</div></th>
+                                <th><div class="th-content">Bytes sent</div></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for login in endlessh %}
+                            <tr>
+                                <td>
+                                    <div class="td-content">{{ login.date }}</div>
+                                </td>
+                                <td>
+                                    <div class="td-content">{{ login.ip }}</div>
+                                </td>
+                                <td>
+                                    <div class="td-content">{{ login.time_wasted }}</div>
+                                </td>
+                                <td>
+                                    <div class="td-content">{{ login.bytes_sent }}</div>
+                                </td>
+    
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- <div class="container">
+<div class="row">
+
     <div class="col">
         <h1>Endlessh</h1>
         {% if endlessh %}
@@ -82,6 +143,6 @@
         {% endif %}
     </div>
 </div>
-</div>
+</div> -->
 
 {% endblock %}
