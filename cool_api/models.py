@@ -52,6 +52,8 @@ class Endlessh(models.Model):
     def get_counters(cls):
         all = cls.objects.all()
         total_time = sum([tm.time_wasted for tm in all])
+        total_bytes_sent = sum([bs.bytes_sent for bs in all])
         return {
-            "total_time": int(total_time / 60)
+            "total_time": int(total_time / 60 / 60),
+            "total_bytes_sent": total_bytes_sent
         }

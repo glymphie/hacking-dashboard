@@ -16,14 +16,12 @@ def index(request):
 
 
 def ftp(request):
-    ftp_logins = FtpLogin.get_all()
-    context = {'ftplogins': ftp_logins}
+    context = {'ftplogins': FtpLogin.get_all()}
     return render(request, "dashboard_web/ftp_overview.html", context)
 
 
 def endlessh(request):
-    endlessh = Endlessh.get_10_latest()
-    context = { 'endlessh': endlessh }
+    context = { 'endlessh': Endlessh.get_all() }
     return render(request, "dashboard_web/endlessh_overview.html", context)
 
 def test(request):
