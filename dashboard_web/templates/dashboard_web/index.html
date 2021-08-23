@@ -1,0 +1,228 @@
+{% extends 'dashboard_web/base.html' %}
+{% load static %}
+{% block title %}Hacking Dashboard{% endblock %}
+
+{% block custom-styles %}
+
+    <link href="{% static 'dashboard_web/plugins/apex/apexcharts.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'dashboard_web/assets/css/widgets/modules-widgets.css' %}" rel="stylesheet" type="text/css" > 
+    <link href="{% static 'dashboard_web/assets/css/scrollspyNav.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'dashboard_web/assets/css/components/custom-counter.css' %}" rel="stylesheet" type="text/css">
+
+{% endblock %}
+
+{% block content %}
+
+<!-- BEGIN DESCRIPTION  -->
+
+<div class="row layout-top-spacing">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-12 layout-spacing">
+        <div class="widget-content-area br-5">
+            <div class="widget">
+
+                <h6>Description</h6>
+
+                <p class="">This project started development at BornHack 2021, for displaying logs monitored from services running in docker containers and public available on the internet.</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- END DESCRIPTION  -->
+
+<!-- BEGIN FTP COUNTER-->
+
+<div class="row layout-top-spacing">
+    <div class="col-xl-6 col-lg-12 col-md-12 col-12 layout-spacing">
+        <div class="widget-content-area br-5">
+
+            <div class="widget-heading">
+                <h5 class="">FTP attack status</h5>
+            </div>
+
+            <div class="widget">
+
+                <div class="simple--counter-container">
+                                        
+                    <div class="counter-container">
+                        <div class="counter-content">
+                            <h1 class="s-counter2 s-counter text-center">{{ counter_ftp.new }}</h1>
+                        </div>
+                        <p class="s-counter-text text-center">NEW</p>
+                    </div>
+                
+                    <div class="counter-container">
+                        <div class="counter-content">
+                            <h1 class="s-counter3 s-counter text-center">{{ counter_ftp.fail }}</h1>
+                        </div>
+                        <p class="s-counter-text text-center">FAIL</p>
+                    </div>
+                
+                    <div class="counter-container">
+                        <div class="counter-content">
+                            <h1 class="s-counter4 s-counter text-center">{{ counter_ftp.ok }}</h1>
+                        </div>
+                        <p class="s-counter-text text-center">OK</p>
+                    </div>
+                
+                </div> 
+            </div>
+        </div>
+    </div>
+
+<!-- END FTP COUNTER-->
+
+<!-- BEGIN ENDLESSH COUNTER-->
+
+    <div class="col-xl-6 col-lg-12 col-md-12 col-12 layout-spacing">
+        <div class="widget-content-area br-5">
+
+            <div class="widget-heading">
+                <h5 class="">EndleSSH attack status</h5>
+            </div>
+
+            <div class="widget">
+
+                <div class="simple--counter-container">
+                                        
+                    <div class="counter-container">
+                        <div class="counter-content">
+                            <h1 class="s-counter5 s-counter text-center">{{ counter_endlessh.total_time }}</h1>
+                        </div>
+                        <p class="s-counter-text text-center">Total hours wasted</p>
+                    </div>
+                
+                    <div class="counter-container">
+                        <div class="counter-content">
+                            <h1 class="s-counter6 s-counter text-center">{{ counter_endlessh.total_bytes_sent }}</h1>
+                        </div>
+                        <p class="s-counter-text text-center">Total bytes sent</p>
+                    </div>
+                
+                </div> 
+            </div>
+        </div>
+    </div>
+
+<!-- END ENDLESSH COUNTER-->
+
+</div>
+
+
+
+
+
+<!-- BEGIN FTP TABLE  -->
+
+<div class="row layout-top-spacing">
+
+    <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
+        <div class="widget widget-table-two">
+            <div class="widget-content-area br-5">
+    
+                <div class="widget-heading">
+                    <h5 class="">Last 10 FTP attacks</h5>
+                </div>
+        
+                <div class="widget-content">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th><div class="th-content">Date</div></th>
+                                    <th><div class="th-content">IP</div></th>
+                                    <th><div class="th-content">Status</div></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for login in ftplogins %}
+                                <tr class="mb-4"> 
+                                    <td>
+                                        <div class="td-content">{{ login.date }}</div>
+                                    </td>
+                                    <td>
+                                        <div class="td-content">{{ login.ip }}</div>
+                                    </td>
+                                    <td>
+                                        {% if login.status == 'OK' %}
+                                            <div class="td-content"><span class="badge outline-badge-success">{{ login.status }}</span></div>
+                                        {% elif login.status == 'FAIL' %}
+                                            <div class="td-content"><span class="badge outline-badge-danger">{{ login.status }}</span></div>
+                                        {% else %}
+                                            <div class="td-content"><span class="badge outline-badge-primary">{{ login.status }}</span></div>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- END FTP TABLE  -->
+
+    <!-- BEGIN ENDLESSH TABLE  -->
+    
+    <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
+        <div class="widget widget-table-two">
+            <div class="widget-content-area br-5">
+    
+                <div class="widget-heading">
+                    <h5 class="">Last 10 EndleSSH attacks</h5>
+                </div>
+        
+                <div class="widget-content">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th><div class="th-content">Date</div></th>
+                                    <th><div class="th-content">IP</div></th>
+                                    <th><div class="th-content">Time wasted</div></th>
+                                    <th><div class="th-content">Bytes sent</div></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for login in endlessh %}
+                                <tr class="pb-4">
+                                    <td>
+                                        <div class="td-content">{{ login.date }}</div>
+                                    </td>
+                                    <td>
+                                        <div class="td-content">{{ login.ip }}</div>
+                                    </td>
+                                    <td>
+                                        <div class="td-content">{{ login.time_wasted }}</div>
+                                    </td>
+                                    <td>
+                                        <div class="td-content">{{ login.bytes_sent }}</div>
+                                    </td>
+        
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- END ENDLESSH TABLE  -->
+
+</div>
+
+{% block custom-scripts %}
+
+<script src="{% static 'dashboard_web/plugins/apex/apexcharts.min.js' %}"></script>
+<script src="{% static 'dashboard_web/assets/js/widgets/modules-widgets.js' %}"></script>
+<script src="{% static 'dashboard_web/assets/js/scrollspyNav.js' %}"></script>
+<script src="{% static 'dashboard_web/plugins/counter/jquery.countTo.js' %}"></script>
+<script src="{% static 'dashboard_web/assets/js/components/custom-counter.js' %}"></script>
+{% endblock %}
+
+{% endblock %}
