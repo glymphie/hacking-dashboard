@@ -2,7 +2,7 @@
 {% load static %}
 {% block title %}Hacking Dashboard{% endblock %}
 
-{% block custom-styles%}
+{% block custom-styles %}
 
 <link rel="stylesheet" type="text/css" href="{% static 'dashboard_web/plugins/table/datatable/datatables.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'dashboard_web/plugins/table/datatable/dt-global_style.css' %}">
@@ -11,11 +11,14 @@
 
 {% block content %}
 
-<h1>FTP</h1>
-
 <div class="row layout-top-spacing" id="cancel-row">
     <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
         <div class="widget-content widget-content-area br-6">
+
+            <div class="widget-heading">
+                <h3 class="">FTP attacks</h3>
+            </div>
+
             <div class="table-responsive mb-4 mt-4">
                 <table id="alter_pagination" class="table table-hover" style="width:100%">
                     <thead>

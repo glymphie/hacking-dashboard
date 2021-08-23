@@ -19,7 +19,9 @@ def ftp(request):
 
 
 def endlessh(request):
-    return render(request, "dashboard_web/endlessh_overview.html")
+    endlessh = Endlessh.get_10_latest()
+    context = { 'endlessh': endlessh }
+    return render(request, "dashboard_web/endlessh_overview.html", context)
 
 def test(request):
     return render(request, "dashboard_web/test.html")
