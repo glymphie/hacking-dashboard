@@ -5,12 +5,11 @@ from cool_api.models import FtpLogin, Endlessh
 
 # Create your views here.
 
-
-def dashboard(request):
+def index(request):
     ftp_logins = FtpLogin.get_10_latest()
     endlessh = Endlessh.get_10_latest()
     context = {'ftplogins' : ftp_logins, 'endlessh': endlessh}
-    return render(request, "dashboard_web/dashboard.html", context )
+    return render(request, "dashboard_web/index.html", context )
 
 
 def ftp(request):
