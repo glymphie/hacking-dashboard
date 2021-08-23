@@ -5,7 +5,9 @@
 {% block custom-styles %}
 
     <link href="{% static 'dashboard_web/plugins/apex/apexcharts.css' %}" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="{% static 'dashboard_web/assets/css/widgets/modules-widgets.css' %}"> 
+    <link href="{% static 'dashboard_web/assets/css/widgets/modules-widgets.css' %}" rel="stylesheet" type="text/css" > 
+    <link href="{% static 'dashboard_web/assets/css/scrollspyNav.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'dashboard_web/assets/css/components/custom-counter.css' %}" rel="stylesheet" type="text/css">
 
 {% endblock %}
 
@@ -28,6 +30,88 @@
 </div>
 
 <!-- END DESCRIPTION  -->
+
+<!-- BEGIN FTP COUNTER-->
+
+<div class="row layout-top-spacing">
+    <div class="col-xl-6 col-lg-12 col-md-12 col-12 layout-spacing">
+        <div class="widget-content-area br-5">
+
+            <div class="widget-heading">
+                <h5 class="">FTP attack status</h5>
+            </div>
+
+            <div class="widget">
+
+                <div class="simple--counter-container">
+                                        
+                    <div class="counter-container">
+                        <div class="counter-content">
+                            <h1 class="s-counter2 s-counter text-center">{{ counter_ftp.new }}</h1>
+                        </div>
+                        <p class="s-counter-text text-center">NEW</p>
+                    </div>
+                
+                    <div class="counter-container">
+                        <div class="counter-content">
+                            <h1 class="s-counter3 s-counter text-center">{{ counter_ftp.fail }}</h1>
+                        </div>
+                        <p class="s-counter-text text-center">FAIL</p>
+                    </div>
+                
+                    <div class="counter-container">
+                        <div class="counter-content">
+                            <h1 class="s-counter4 s-counter text-center">{{ counter_ftp.ok }}</h1>
+                        </div>
+                        <p class="s-counter-text text-center">OK</p>
+                    </div>
+                
+                </div> 
+            </div>
+        </div>
+    </div>
+
+<!-- END FTP COUNTER-->
+
+<!-- BEGIN ENDLESSH COUNTER-->
+
+    <div class="col-xl-6 col-lg-12 col-md-12 col-12 layout-spacing">
+        <div class="widget-content-area br-5">
+
+            <div class="widget-heading">
+                <h5 class="">EndleSSH attack status</h5>
+            </div>
+
+            <div class="widget">
+
+                <div class="simple--counter-container">
+                                        
+                    <div class="counter-container">
+                        <div class="counter-content">
+                            <h1 class="s-counter5 s-counter text-center">{{ counter_endlessh.total_time }}</h1>
+                        </div>
+                        <p class="s-counter-text text-center">Total minutes wasted</p>
+                    </div>
+                
+                    <div class="counter-container">
+                        <div class="counter-content">
+                            <h1 class="s-counter6 s-counter text-center">915</h1>
+                        </div>
+                        <p class="s-counter-text text-center">Total bytes sent</p>
+                    </div>
+                
+                </div> 
+            </div>
+        </div>
+    </div>
+
+<!-- END ENDLESSH COUNTER-->
+
+</div>
+
+
+
+
 
 <!-- BEGIN FTP TABLE  -->
 
@@ -136,7 +220,9 @@
 
 <script src="{% static 'dashboard_web/plugins/apex/apexcharts.min.js' %}"></script>
 <script src="{% static 'dashboard_web/assets/js/widgets/modules-widgets.js' %}"></script>
-
+<script src="{% static 'dashboard_web/assets/js/scrollspyNav.js' %}"></script>
+<script src="{% static 'dashboard_web/plugins/counter/jquery.countTo.js' %}"></script>
+<script src="{% static 'dashboard_web/assets/js/components/custom-counter.js' %}"></script>
 {% endblock %}
 
 {% endblock %}
