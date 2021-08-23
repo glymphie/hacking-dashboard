@@ -19,8 +19,10 @@
     
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM STYLES -->
 
-    <link href="{% static 'dashboard_web/plugins/apex/apexcharts.css' %}" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="{% static 'dashboard_web/assets/css/widgets/modules-widgets.css' %}">    
+    {% block custom-styles%}
+
+    {% endblock %}
+  
 
     <style>
 
@@ -114,8 +116,9 @@
 
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
 
-    <script src="{% static 'dashboard_web/plugins/apex/apexcharts.min.js' %}"></script>
-    <script src="{% static 'dashboard_web/assets/js/widgets/modules-widgets.js' %}"></script>
+    {% block custom-scripts %}
+
+    {% endblock%}
 
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
 

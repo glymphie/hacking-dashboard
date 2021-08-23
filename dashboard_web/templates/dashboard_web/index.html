@@ -2,6 +2,12 @@
 {% load static %}
 {% block title %}Hacking Dashboard{% endblock %}
 
+{% block custom-styles %}
+
+    <link href="{% static 'dashboard_web/plugins/apex/apexcharts.css' %}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{% static 'dashboard_web/assets/css/widgets/modules-widgets.css' %}"> 
+
+{% endblock %}
 
 {% block content %}
 
@@ -126,5 +132,11 @@
 
 </div>
 
+{% block custom-scripts %}
+
+<script src="{% static 'dashboard_web/plugins/apex/apexcharts.min.js' %}"></script>
+<script src="{% static 'dashboard_web/assets/js/widgets/modules-widgets.js' %}"></script>
+
+{% endblock %}
 
 {% endblock %}
